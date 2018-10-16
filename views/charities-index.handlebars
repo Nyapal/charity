@@ -4,5 +4,7 @@
 
 
 {{#each charities}}
-  <h2>{{this.org}}</h2>
+  <h2>
+      <a href="/charities/{{this._id}}">{{this.org}}</a>
+  </h2>
 {{/each}}

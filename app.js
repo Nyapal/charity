@@ -43,8 +43,21 @@ app.get('/charities/new', (req, res) => {
 })
 
 app.post('/chairities', (req, res) => {
-    console.log(req.body)
+    Charity.create(req.body).then((charity) => {
+        console.log(charity)
+        res.redirect(`/charities/${charity._id}`)
+    }).catch((err) => {
+        console.log(err.message)
+    })
 })
+
+app.get('/charities/:id', (req, res) => {
+  Charity.findById(req.params.id).then((charity) => {
+      res.render('charities-show', {charity: charity})
+  }).catch((err) => {
+      console.log(err.message)
+  })
+});
 
 app.listen(3000, () => {
   console.log('App listening on port 3000!')

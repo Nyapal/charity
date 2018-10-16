@@ -1,9 +1,7 @@
-<form method="POST" action="/charities">
+<form method="POST" action="/charities/{{charity._id}}?_method=PUT">
   {{> charity-form}}
-
   <!-- BUTTON -->
   <p>
     <button type="submit">Save Charity</button>
   </p>
-
 </form>

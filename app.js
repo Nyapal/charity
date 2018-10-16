@@ -6,8 +6,17 @@ var exphbs = require('express-handlebars');
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
+let charities = [
+  { charity: "Humane Society" },
+  { charity: "Childrens Hospital" },
+  { charity: "Childrens Hospital" },
+  { charity: "Childrens Hospital" },
+  { charity: "Childrens Hospital" }
+]
+
+// INDEX
 app.get('/', (req, res) => {
-  res.render('home', { msg: 'Handlebars are Cool!' });
+  res.render('charities-index', { charities: charities });
 })
 
 app.listen(3000, () => {

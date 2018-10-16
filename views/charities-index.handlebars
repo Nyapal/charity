@@ -1,10 +1,9 @@
 <h1>Charities</h1>
 
-<a href="/charities/new">New Charity</a>
-
-
-{{#each charities}}
-  <h2>
-      <a href="/charities/{{this._id}}">{{this.org}}</a>
-  </h2>
-{{/each}}
+<div class="row">
+  {{#each charities}}
+    <div class="col-sm-4">
+      <h2><a href="/charities/{{this._id}}">{{this.org}}</a></h2>
+    </div>
+  {{/each}}
+</div>

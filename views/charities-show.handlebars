@@ -3,15 +3,22 @@
   <div class="col-sm-6 col-sm-offset-3">
     <h1>{{charity.org}}</h1>
 
-    <p><a href="/charities/{{charity._id}}/edit">Edit</a></p>
-    <!-- Delete button -->
-    <p><form method="POST" action="/charities/{{charity._id}}?_method=DELETE">
-        <button type="submit">Delete</button>
-    </form></p>
+    <p>
+        <!-- Edit Button -->
+        <a href="/charities/{{charity._id}}/edit">
+            <button>Edit </button>
+        </a>
+        <form method="POST" action="/charities/{{charity._id}}?_method=DELETE">
+            <button type="submit">Delete</button>
+        </form>
+    </p>
 
     <hr>
 
     {{> donation-form}}
 
+    {{#each donations}}
+        {{> donation}}
+    {{/each}}
   </div>
 </div>

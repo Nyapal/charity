@@ -1,4 +1,5 @@
-<form>
+<form action="/charities/donations" method="post">
+<input type="hidden" value="{{charity._id}}" name="charityId">
   <fieldset>
     <legend>Add a Donation</legend>
     <!-- TITLE -->
@@ -7,7 +8,8 @@
       <input class="form-control"
         id="donation-date"
         type="date"
-        name="donation-date"/>
+        name="date"
+        value="{{donation.date}}"/>
     </div>
 
     <!-- DESCRIPTION -->
@@ -15,9 +17,11 @@
       <label for="donation-amount">Amount</label><br>
       <textarea class="form-control"
       id="donation-amount"
+      type="text"
       name="amount"
       rows="4"
-      placeholder="Donation Amount"/></textarea>
+      placeholder="Donation Amount"
+      value="{{donation.amount}}"/></textarea>
     </div>
   </fieldset>
 

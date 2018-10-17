@@ -1,6 +1,7 @@
 const Charity = require('../models/charities.js')
-function charities (app) {
+const Donation = require('../models/donations.js')
 
+function charities (app) {
     app.get('/', (req, res) => {
       Charity.find()
         .then(charities => {
@@ -26,7 +27,9 @@ function charities (app) {
 
     app.get('/charities/:id', (req, res) => {
       Charity.findById(req.params.id).then((charity) => {
-          res.render('charities-show', {charity: charity})
+          Donation.find({ charityId: req.params.id}).then(donations => {
+              res.render('charities-show', {charity: charity, donations: donations})
+          })
       }).catch((err) => {
           console.log(err.message)
       })

@@ -9,5 +9,14 @@ function donations (app) {
         })
     })
 
+    app.delete('/charities/donations/:id', function (req, res) {
+        console.log("DELETE comment")
+        Donation.findByIdAndRemove(req.params.id).then((donation) => {
+            res.redirect(`/charities/${donation.charityId}`);
+        }).catch((err) => {
+            console.log(err.message);
+        })
+    })
+
 }
 module.exports = donations

@@ -9,16 +9,17 @@ const Donation = require('./models/donations')
 const mongoose = require('mongoose')
 var exphbs = require('express-handlebars');
 
-mongoose.connect('mongodb://localhost/charity-tracker');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/charity-tracker', {useNewUrlParser: true});
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
+app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'))
 
 charities(app)
 donations(app)
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log('App listening on port 3000!')
 })
